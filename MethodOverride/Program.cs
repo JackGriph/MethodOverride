@@ -6,9 +6,33 @@ namespace MethodOverride
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Datum(2002, "Mars"));
-            Console.WriteLine(Datum(2002, "Mars", 18)); 
-            Console.WriteLine(Datum(2002, "Mars", 18, true));
+
+            int år;
+            while (true)
+            {
+                Console.WriteLine("Vänligen skriv in det år du föddes: ");
+                if (int.TryParse(Console.ReadLine(), out år))
+                    break;
+                Console.WriteLine("Ogiltigt år, försök igen.");
+
+            }
+
+            Console.WriteLine("Vänligen skriv in den månad du föddes: ");
+            string månad = Console.ReadLine();
+
+            int dag; 
+            while (true)
+            {
+                Console.WriteLine("Vänligen skriv in den dag du föddes: ");
+                if (int.TryParse(Console.ReadLine(), out dag))
+                    break;
+                Console.WriteLine("Ogiltig dag, försök igen.");
+            }
+
+            Console.WriteLine("Vill du att datumet ska vara med stora bokstäver? (j/n)");
+            bool uppercase = Console.ReadLine().ToLower() == "j";
+            Console.WriteLine(Datum(år, månad, dag, uppercase));
+          
         }
 
         static string Datum(int år, string månad)
