@@ -6,33 +6,22 @@ namespace MethodOverride
     {
         static void Main(string[] args)
         {
-
-            int år;
-            while (true)
-            {
-                Console.WriteLine("Vänligen skriv in det år du föddes: ");
-                if (int.TryParse(Console.ReadLine(), out år))
-                    break;
-                Console.WriteLine("Ogiltigt år, försök igen.");
-
-            }
-
-            Console.WriteLine("Vänligen skriv in den månad du föddes: ");
+            Console.WriteLine("Ange år, månad, dag och om det ska vara versaler true/false");
+            Console.Write("År: ");
+            int år = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Månad: ");
             string månad = Console.ReadLine();
+            Console.Write("Dag: ");
+            int dag = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Versaler (true/false): ");
+            bool uppercase = Convert.ToBoolean(Console.ReadLine());
 
-            int dag; 
-            while (true)
-            {
-                Console.WriteLine("Vänligen skriv in den dag du föddes: ");
-                if (int.TryParse(Console.ReadLine(), out dag))
-                    break;
-                Console.WriteLine("Ogiltig dag, försök igen.");
-            }
 
-            Console.WriteLine("Vill du att datumet ska vara med stora bokstäver? (j/n)");
-            bool uppercase = Console.ReadLine().ToLower() == "j";
+            Console.WriteLine("Här har du olika format på datumet:");
+            Console.WriteLine(Datum(år, månad));
+            Console.WriteLine(Datum(år, månad, dag));   
             Console.WriteLine(Datum(år, månad, dag, uppercase));
-          
+
         }
 
         static string Datum(int år, string månad)
